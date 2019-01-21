@@ -1,0 +1,8 @@
+<app-product-item
+  class="w-full lg:w-1/2 flex"
+  *ngFor="let product of (products); let i = index"
+  [index]="i"
+  [product]="product"
+  (click)="showProduct(product)"
+>
+</app-product-item>

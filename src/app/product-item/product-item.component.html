@@ -1,0 +1,12 @@
+<div class="px-4 mb-4 flex flex-grow">
+  <div class="bg-white rounded-sm p-4 hover:shadow flex-grow items-stretch flex flex-col justify-between">
+      <div class="h-48 bg-cover" [ngStyle]="style"></div>
+      <h4 class="text-base text-grey-dark">{{ this._product.name }}</h4>
+      <div class="flex justify-between items-center">
+          <svg class="w-6 h-6 text-grey hover:text-red transition-fast" fill="currentColor">
+              <use xlink:href="./assets/favorite.svg#Capa_1"/>
+          </svg>
+          <div>{{ this._product.rating }} Ocijeni</div>
+      </div>
+    </div>
+</div>

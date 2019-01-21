@@ -1,0 +1,18 @@
+@tailwind prefilgiht;
+
+
+.container {
+  @apply max-w-2xl
+}
+
+.input {
+  transition: all 0.5s;
+  @apply font-sans text-black border-0
+}
+
+.input:focus {
+  @apply font-sans text-black outline-none border-red
+}
+
+@tailwind utilities;
+
