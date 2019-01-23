@@ -31,6 +31,8 @@ export class ProductRatingComponent {
     const rating = Math.round(
         (this.roundPercentageRating(ratingPercentage) / 100) * this.starsTotal
     );
+
+    console.log('@TODO Add rating'+ rating);
   }
 
   private roundPercentageRating(rating: number): number {

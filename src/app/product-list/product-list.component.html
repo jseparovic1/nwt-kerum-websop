@@ -8,8 +8,9 @@
   </app-product-item>
 </ng-container>
 
-<div *ngIf="!this.products.length" class="w-full text-center">
-  <h4 class="text-3xl text-grey-dark leading-tight">Nema traženih proizvoda</h4>
+<div *ngIf="!this.products.length" class="w-full text-center flex-1">
+  <h4 class="text-grey-dark leading-tight">
+      Nema traženih proizvoda za pretragu
+      <span class="text-red">{{ this.searchTerm }}</span>
+  </h4>
 </div>
-
-

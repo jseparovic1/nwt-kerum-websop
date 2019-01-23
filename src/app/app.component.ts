@@ -9,6 +9,4 @@ import { Product } from './models/product.model';
 })
 export class AppComponent {
   title = 'Kerum webshop';
-
-  constructor(private productsService: ProductsService) {}
 }

@@ -13,9 +13,6 @@ export class ProductSearchComponent {
   constructor(private productService: ProductsService) { }
 
   searchProducts(event: any) {
-    this.productService.findByTerm(event)
-        .subscribe((products) => {
-          this.productSearch.emit(products);
-      });
+    this.productService.getByTerm(event);
   }
 }

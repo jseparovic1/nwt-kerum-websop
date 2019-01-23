@@ -1,28 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 import { PRODUCTS } from '../models/mock-products';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
   private products: Observable<Product[]>;
+  public searchResults = new BehaviorSubject<object>(new Object);
 
   constructor() {
      this.products = of(PRODUCTS);
    }
 
-  public getAll(): Observable<Product[]> {
+  public getAll(term?: string): Observable<any> {
     return this.products;
   }
 
-  public findByTerm(term: string): Observable<Product[]> {
+  public getByTerm(term: string) {
     if (!term.trim()) {
-      return this.getAll();
+      return this.searchResults.next(PRODUCTS);
     }
 
-    return of(PRODUCTS.filter(product => product.name.startsWith(term)));
+    this.searchResults.next(
+      {
+        'products': PRODUCTS.filter(product => product.name.toLocaleLowerCase().startsWith(term)),
+        'term': term,
+      }
+    );
   }
 
   public getProduct(id: number): Observable<Product> {

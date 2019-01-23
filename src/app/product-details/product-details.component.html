@@ -1,14 +1,46 @@
-<h1>RADIM!</h1>
-
-<!-- <div class="px-4 mb-4 flex flex-grow">
+<div class="px-4 mb-4 flex flex-grow">
   <div class="bg-white rounded-sm p-4 hover:shadow flex-grow items-stretch flex flex-col justify-between">
-      <div class="h-48 bg-cover"></div>
-      <h4 class="text-base text-grey-dark">ASDFASF</h4>
-      <div class="flex justify-between items-center">
-          <svg class="w-6 h-6 text-grey hover:text-red transition-fast" fill="currentColor">
-              <use xlink:href="./assets/favorite.svg#Capa_1"/>
-          </svg>
-          <div>Ocijeni</div>
+      <div class="mb-10">
+        <h4 class="text-black text-xl py-4 m-0">{{ this._product.name }}</h4>
+        <div class="w-8 bg-grey-dark border-red h-1"></div>
+      </div>
+      <div class="bg-blue p-4 order">
+        <img class="h-32 float-left px-3 pt-2" src="{{ this._product.image }}">
+        <p class="reset">{{ this._product.description }}</p>
+      </div>
+      <div class="flex p-4 justify-around items-center">
+          <ng-container *ngIf=this.isInWishlist()>
+              <svg (click)="removeFromWishlist()" class="w-6 h-6 text-grey text-red transition-fast" fill="currentColor">
+                  <use xlink:href="./assets/favorite.svg#Capa_1"/>
+              </svg>
+          </ng-container>
+          <ng-container *ngIf=!this.isInWishlist()>
+              <svg (click)="addToWishlist(this._product)" class="w-6 h-6 text-grey hover:text-red transition-fast" fill="currentColor">
+                  <use xlink:href="./assets/favorite.svg#Capa_1"/>
+              </svg>
+          </ng-container>
+          <div>
+            <app-product-rating [rating]='this.getRating()'></app-product-rating>
+          </div>
+      </div>
+      <div class="p-4">
+        <div class="w-full bg-grey-lightest border-red h-1 mb-1"></div>
+        <div class="py-8" *ngFor="let review of (this._product.reviews)">
+          <div class="flex flex-row items-center justify-between">
+            <div class="w-1/4 flex-no-shrink flex flex-col items-center self-start">
+                <img class="rounded w-8 h-8 block" src="https://avatars.dicebear.com/v2/identicon/asd.svg"/>
+                <span class="text-grey-light text-sm">{{ review.username }}</span>
+            </div>
+            <div class="flex-grow">
+              <div class="flex">
+                  <app-product-rating [rating]="review.rating"></app-product-rating>
+                  <span class="block ml-2 font-bold text-red-dark">{{ review.rating.toFixed(2) }}</span>
+              </div>
+                <p class="text-sm">{{ review.text }}</p>
+            </div>
+          </div>
+          <div>
+        </div>
       </div>
     </div>
-</div> -->
+</div>

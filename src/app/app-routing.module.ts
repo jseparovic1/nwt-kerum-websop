@@ -5,10 +5,9 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'products', component: ProductListComponent },
+  { path: '', component: ProductListComponent },
   { path: 'product/:id', component: ProductDetailsComponent },
   { path: '**', component: NotFoundComponent },
-  { path: '', redirectTo: '/products', pathMatch: 'full' }
 ];
 
 @NgModule({

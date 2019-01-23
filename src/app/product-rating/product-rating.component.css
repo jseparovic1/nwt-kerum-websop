@@ -28,11 +28,9 @@
   color: #F2D024;
 }
 
-.rating__inner:hover::before {
-  font-weight: 900;
-  color: #E3342F;
-}
 .rating__outer:hover::before {
-  color: #E3342F;
-  font-weight: 900;
+  cursor: pointer;
+}
+.rating__inner:hover::before {
+  cursor: pointer;
 }

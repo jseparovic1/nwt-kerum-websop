@@ -1,5 +1,9 @@
 @tailwind prefilgiht;
 
+.reset {
+  padding: 0;
+  margin: 0;
+}
 
 .container {
   @apply max-w-2xl w-full
