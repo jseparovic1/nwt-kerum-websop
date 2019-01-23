@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
-import { Product } from '../models/product.model';
-import { ProductsService } from '../service/products.service';
 import { Router } from '@angular/router';
+import { ProductsService } from 'src/app/service/products.service';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-product-list',

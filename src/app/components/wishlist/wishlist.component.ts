@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WhislistService } from '../service/whislist.service';
-import { Product } from '../models/product.model';
-import { ProductsService } from '../service/products.service';
+import { Product } from 'src/app/models/product.model';
+import { ProductsService } from 'src/app/service/products.service';
+import { WhislistService } from 'src/app/service/whislist.service';
 
 @Component({
   selector: 'app-wishlist',

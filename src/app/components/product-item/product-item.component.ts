@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../models/product.model';
 import { Router } from '@angular/router';
-import { WhislistService } from '../service/whislist.service';
-import { ProductsService } from '../service/products.service';
+import { Product } from 'src/app/models/product.model';
+import { WhislistService } from 'src/app/service/whislist.service';
+import { ProductsService } from 'src/app/service/products.service';
 
 @Component({
   selector: 'app-product-item',
