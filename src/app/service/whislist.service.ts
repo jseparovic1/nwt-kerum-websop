@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductsService } from './products.service';
+import { AlertService } from './alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,14 @@ import { ProductsService } from './products.service';
 export class WhislistService {
   items: Product[] = [];
 
+  constructor(private alert: AlertService) {}
+
   add(product: Product): void {
     if (this.isWished(product)) {
       return;
     }
 
+    this.alert.show('Dodano u wishlistu.');
     this.items.push(product);
   }
 
