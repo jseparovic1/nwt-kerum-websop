@@ -2,7 +2,7 @@
 
 
 .container {
-  @apply max-w-2xl
+  @apply max-w-2xl w-full
 }
 
 .input {
