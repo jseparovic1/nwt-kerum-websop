@@ -25,7 +25,7 @@ export class ProductsService {
 
     this.searchResults.next(
       {
-        'products': PRODUCTS.filter(product => product.name.toLocaleLowerCase().startsWith(term)),
+        'products': PRODUCTS.filter(product => product.name.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) !== -1),
         'term': term,
       }
     );

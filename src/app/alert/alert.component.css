@@ -1,0 +1,4 @@
+:host {
+  text-decoration: underline;
+  transition: ease-in 1s;
+}
