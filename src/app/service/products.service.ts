@@ -7,9 +7,35 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductsService {
-  constructor() { }
+  private products: Observable<Product[]>;
 
-  getAll(): Observable<Product[]> {
-    return of(PRODUCTS);
+  constructor() {
+     this.products = of(PRODUCTS);
+   }
+
+  public getAll(): Observable<Product[]> {
+    return this.products;
+  }
+
+  public findByTerm(term: string): Observable<Product[]> {
+    if (!term.trim()) {
+      return this.getAll();
+    }
+
+    return of(PRODUCTS.filter(product => product.name.startsWith(term)));
+  }
+
+  public getProduct(id: number): Observable<Product> {
+    return of(PRODUCTS.find(product => product.id === id));
+  }
+
+  public getProductRating(product: Product) {
+    const initial = 0;
+
+    const ratingTotal = product.reviews.reduce((ratingSum, review) => {
+      return ratingSum + review.rating;
+    }, initial);
+
+    return ratingTotal / product.reviews.length;
   }
 }

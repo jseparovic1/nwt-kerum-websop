@@ -1,12 +1,23 @@
 <div class="px-4 mb-4 flex flex-grow">
   <div class="bg-white rounded-sm p-4 hover:shadow flex-grow items-stretch flex flex-col justify-between">
+    <div (click)="showProduct(this._product)">
       <div class="h-48 bg-cover" [ngStyle]="style"></div>
       <h4 class="text-base text-grey-dark">{{ this._product.name }}</h4>
+    </div>
       <div class="flex justify-between items-center">
-          <svg class="w-6 h-6 text-grey hover:text-red transition-fast" fill="currentColor">
-              <use xlink:href="./assets/favorite.svg#Capa_1"/>
-          </svg>
-          <div>{{ this._product.rating }} Ocijeni</div>
+          <ng-container *ngIf=this.isInWishlist()>
+              <svg (click)="removeFromWishlist()" class="w-6 h-6 text-grey text-red transition-fast" fill="currentColor">
+                  <use xlink:href="./assets/favorite.svg#Capa_1"/>
+              </svg>
+          </ng-container>
+          <ng-container *ngIf=!this.isInWishlist()>
+              <svg (click)="addToWishlist(this._product)" class="w-6 h-6 text-grey hover:text-red transition-fast" fill="currentColor">
+                  <use xlink:href="./assets/favorite.svg#Capa_1"/>
+              </svg>
+          </ng-container>
+          <div>
+            <app-product-rating [rating]='this.getRating()'></app-product-rating>
+          </div>
       </div>
     </div>
 </div>

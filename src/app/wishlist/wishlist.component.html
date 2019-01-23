@@ -1,10 +1,18 @@
-<div class="px-6">
-  <h4>Favoriti</h4>
+<h4>Favoriti</h4>
+<ng-container *ngIf="this.items.length === 0">
+    <div>
+      <h4 class="text-grey-dark text-sm">Whislista prazna :(</h4>
+    </div>
+</ng-container>
+<div
+  *ngFor="let item of (items); let i = index"
+  class="px-6"
+  >
   <div class="flex w-full items-center justify-start">
-    <img class="w-16 h-16 p-4" src="/assets/prsut.jpg">
+    <img class="w-16 h-16 p-4" src="{{ item.image }}">
     <div class="flex flex-col justify-center">
-        <h4 class="w-full m-0 text-grey-darkest">Kerumova kesica</h4>
-        <p class="text-sm text-grey font-italic m-0"><span class="font-bold text-base">3.5</span>/5</p>
+        <h4 class="w-full m-0 text-grey-darkest">{{ item.name }}</h4>
+        <p class="text-sm text-grey font-italic m-0"><span class="font-bold text-base">{{ this.getRating(item) }}</span>/5</p>
     </div>
   </div>
 </div>

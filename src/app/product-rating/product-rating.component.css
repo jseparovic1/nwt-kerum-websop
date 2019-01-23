@@ -1,0 +1,38 @@
+.rating__outer {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.rating__outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 100;
+  color: #8795a1;
+}
+
+.rating__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.rating__inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #F2D024;
+}
+
+.rating__inner:hover::before {
+  font-weight: 900;
+  color: #E3342F;
+}
+.rating__outer:hover::before {
+  color: #E3342F;
+  font-weight: 900;
+}

@@ -1,8 +1,15 @@
-<app-product-item
-  class="w-full lg:w-1/2 flex"
-  *ngFor="let product of (products); let i = index"
-  [index]="i"
-  [product]="product"
-  (click)="showProduct(product)"
->
-</app-product-item>
+<ng-container *ngIf="this.products.length > 0">
+    <app-product-item
+    class="w-full lg:w-1/2 flex"
+    *ngFor="let product of (products); let i = index"
+    [index]="i"
+    [product]="product"
+  >
+  </app-product-item>
+</ng-container>
+
+<div *ngIf="!this.products.length" class="w-full text-center">
+  <h4 class="text-3xl text-grey-dark leading-tight">Nema traženih proizvoda</h4>
+</div>
+
+

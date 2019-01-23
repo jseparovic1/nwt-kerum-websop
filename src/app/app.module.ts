@@ -8,6 +8,9 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { FormsModule } from '@angular/forms';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductSearchComponent } from './product-search/product-search.component';
+import { ProductRatingComponent } from './product-rating/product-rating.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductListComponent,
     WishlistComponent,
     ProductItemComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ProductSearchComponent,
+    ProductRatingComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
