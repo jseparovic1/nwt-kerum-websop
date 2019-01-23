@@ -2,6 +2,7 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/service/products.service';
 import { Product } from 'src/app/models/product.model';
+import ProductResponse from 'src/app/models/productResponse';
 
 @Component({
   selector: 'app-product-list',
@@ -19,20 +20,14 @@ export class ProductListComponent implements OnInit {
     this.classList = 'flex flex-row flex-wrap w-full';
 
     this.productsService.getAll()
-      .subscribe(products => {
-        this.products = products;
+      .subscribe(response => {
+        this.products = response.products;
     });
 
-    this.productsService.searchResults.subscribe((result) => {
-      if (result.hasOwnProperty('products')) {
+    this.productsService.searchResults.subscribe((result: ProductResponse) => {
+      if (result.hasOwnProperty('term')) {
         this.searchTerm = result.term;
         this.products = result.products;
-
-        return;
-      }
-
-      if (result.length > 0) {
-        this.products = result;
       }
     });
   }

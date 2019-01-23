@@ -7,11 +7,14 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductsService {
-  private products: Observable<Product[]>;
+  private products: Observable<object>;
   public searchResults = new BehaviorSubject<object>(new Object);
 
   constructor() {
-     this.products = of(PRODUCTS);
+     this.products = of({
+        'products': PRODUCTS,
+        'term': null,
+      });
    }
 
   public getAll(term?: string): Observable<any> {
@@ -19,8 +22,13 @@ export class ProductsService {
   }
 
   public getByTerm(term: string) {
+    console.log(term);
+
     if (!term.trim()) {
-      return this.searchResults.next(PRODUCTS);
+      return this.searchResults.next({
+        'products': PRODUCTS,
+        'term': '',
+      });
     }
 
     this.searchResults.next(
