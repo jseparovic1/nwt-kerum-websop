@@ -12,7 +12,7 @@
     <img class="w-16 h-16 p-4" src="{{ item.image }}">
     <div class="flex flex-col justify-center">
         <h4 class="w-full m-0 text-grey-darkest">{{ item.name }}</h4>
-        <p class="text-sm text-grey font-italic m-0"><span class="font-bold text-base">{{ this.getRating(item) }}</span>/5</p>
+        <p class="text-sm text-grey font-italic m-0"><span class="font-bold text-base">{{ this.getRating(item).toFixed(2) }}</span>/5</p>
     </div>
   </div>
 </div>
