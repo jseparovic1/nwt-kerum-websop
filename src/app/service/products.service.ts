@@ -3,6 +3,7 @@ import { Product } from '../models/product.model';
 import { PRODUCTS } from '../models/mock-products';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import ProductResponse from '../models/productResponse';
+import { AlertService } from './alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ProductsService {
   private products: Observable<object>;
   public searchResults = new BehaviorSubject<object>(new Object);
 
-  constructor() {
+  constructor(private alert: AlertService) {
      this.products = of({
         'products': PRODUCTS,
         'term': null,
@@ -23,8 +24,6 @@ export class ProductsService {
   }
 
   public getByTerm(term: string) {
-    console.log(term);
-
     if (!term.trim()) {
       return this.searchResults.next({
         'products': PRODUCTS,
@@ -55,6 +54,7 @@ export class ProductsService {
   }
 
   public addRating(ratedProduct: Product, rating: number) {
+     this.alert.show('Review dodan.');
 
       this.products.subscribe((response: ProductResponse) => {
           response.products.map((p) => {
