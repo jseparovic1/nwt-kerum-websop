@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-product-rating',
@@ -14,6 +14,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductRatingComponent {
   private starsTotal = 5;
   private ratingPercentage: number;
+  @Output() rated: EventEmitter<number> = new EventEmitter();
+
 
   @Input() set rating(rating: number) {
       this.ratingPercentage = (rating / this.starsTotal) * 100;
@@ -32,7 +34,7 @@ export class ProductRatingComponent {
         (this.roundPercentageRating(ratingPercentage) / 100) * this.starsTotal
     );
 
-    console.log('@TODO Add rating'+ rating);
+    this.rated.emit(rating);
   }
 
   private roundPercentageRating(rating: number): number {

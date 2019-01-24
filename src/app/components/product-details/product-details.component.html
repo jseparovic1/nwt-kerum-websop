@@ -20,7 +20,8 @@
               </svg>
           </ng-container>
           <div>
-            <app-product-rating [rating]='this.getRating()'></app-product-rating>
+            <app-product-rating (rated)="rateProduct($event)" [rating]='this.getRating()'></app-product-rating>
+            <span class="ml-2 font-bold text-red-dark">{{ this.getRating() }}</span>
           </div>
       </div>
       <div class="p-4">

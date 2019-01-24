@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 import { PRODUCTS } from '../models/mock-products';
 import { Observable, of, BehaviorSubject } from 'rxjs';
+import ProductResponse from '../models/productResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,22 @@ export class ProductsService {
     }, initial);
 
     return ratingTotal / product.reviews.length;
+  }
+
+  public addRating(ratedProduct: Product, rating: number) {
+
+      this.products.subscribe((response: ProductResponse) => {
+          response.products.map((p) => {
+            if (p.id === ratedProduct.id) {
+                p.reviews.push({
+                  username: 'Current user',
+                  rating: rating,
+                  title: '',
+                  text: 'Nema komentara.',
+                });
+            }
+            return p;
+          });
+     });
   }
 }

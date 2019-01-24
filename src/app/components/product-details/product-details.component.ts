@@ -47,7 +47,11 @@ export class ProductDetailsComponent implements OnInit {
     this.wishlist.remove(this._product);
   }
 
-  getRating(): number {
-    return this.productsService.getProductRating(this._product);
+  getRating(): string {
+    return this.productsService.getProductRating(this._product).toFixed(2);
+  }
+
+  rateProduct(rating: number) {
+    this.productsService.addRating(this._product, rating);
   }
 }
